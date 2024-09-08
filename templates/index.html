@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SizweHDFactory - Timestamp Encoder</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .result-table {
+            margin-top: 20px;
+            width: 100%;
+        }
+        .encoded-string {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">SizweHDFactory - Timestamp Encoder</h2>
+        <form method="POST" class="mt-4">
+            <div class="form-group">
+                <label for="timestamp">Enter Timestamp (YYYY-MM-DD HH:MM:SS):</label>
+                <input type="text" class="form-control" id="timestamp" name="timestamp" placeholder="e.g. 2019-07-15 22:03:16" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Convert</button>
+        </form>
+
+        {% if result %}
+            <div class="mt-4">
+                {% if result.error %}
+                    <div class="alert alert-danger">
+                        Error: {{ result.error }}
+                    </div>
+                {% else %}
+                    <!-- Display the extracted information in a table -->
+                    <table class="table table-bordered result-table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Hour</th>
+                                <th>Shift</th>
+                                <th>Day</th>
+                                <th>Month</th>
+                                <th>Year</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ result.hour }}</td>
+                                <td>{{ result.shift }}</td>
+                                <td>{{ result.day }}</td>
+                                <td>{{ result.month }}</td>
+                                <td>{{ result.year }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <!-- Display the final encoded string separately below the table -->
+                    <div class="encoded-string">
+                        <strong>Final encoded string:</strong> {{ result.encoded_string }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
