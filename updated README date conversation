@@ -1,0 +1,48 @@
+# Devskiller programming task - Date Conversion
+
+## Question
+
+A hard-drive factory encodes the shift of manufacture of the hard-drive in 6 characters.
+
+1. The first character is the work shift, A,B or C, that produced the item. Here are the shift work hours.
+    
+    Shift A works between the hours of 07:00 to 15:00 (exclusive).
+    
+    Shift B works between the hours of 15:00 to 23:00 (exclusive).
+    
+    Shift C works between the hours of 23:00 to 07:00 (exclusive).
+
+2. The following two characters are the day of the month the shift is starting.
+    A single digit day of the month, such as the 1st, is encoded with two digits -> '01'.
+
+3. The following 2 characters encode the shift month. Months are then encoded with a single character:
+    ```
+        January     - A
+        February    - B
+        March       - C
+        April       - D
+        May         - E 
+        June        - F
+        July        - G
+        August      - H
+        September   - J
+        October     - K
+        November    - L
+        December    - M
+    ```
+    *NB The letter 'I' is skipped*
+
+4. Finally, the last 2 caracters encode the shift year using the last 2 digits of the year.
+e.g. 2019 -> 19
+
+Your task is to complete the function *convert_date* so as to convert an input timestamp to the encoding that will be placed on the hard-drive.
+
+For example:
+```
+convert_date(timestamp_string='2019-07-15 22:03:16')
+->'B15G19'
+```
+```
+convert_date(timestamp_string='2015-01-05 07:00:01')
+->'A05A15'
+```
